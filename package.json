@@ -1,0 +1,21 @@
+{
+  "name": "pw2q42025",
+  "version": "1.0.0",
+  "description": "Hola mundo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start-esp": "node index-esp.js"
+  },
+  "keywords": [
+    "hola",
+    "mundo",
+    "pw2"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
