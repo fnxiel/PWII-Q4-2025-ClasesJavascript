@@ -1,87 +1,48 @@
+//Importancion de dependencias - externas
 var colors = require('colors');
- 
-var persona = {
-    nombre: "Luke",
-    apellido: "Skywalker",
-    edad: 25,
-    direccion: "Tatooine"
+
+//Importacion de depencias - internas
+
+//var Persona = require('./models/Persona');
+//var Configuracion = require('./config/Config');
+var {persona1, persona2, persona3, persona4, persona5, pasatiempo1, pasatiempo3, pasatiempo4} = require('./inicializar');
+var App = require('./models/App');
+const Empleado = require('./models/Empleado');
+
+var app = new App()
+
+
+//Ejemplos de la operacion de la aplicacion
+
+//funciones de bloque
+function saludarConFuncionBloque(){
+    console.log("Funcion de bloque retorna valor")
+    return "Hola"
 }
 
-var persona2 = {
-    nombre: "Leia",
-    apellido: "Organa",
-    edad: 25,
-    direccion: "X"
+//funciones de flecha
+const saludarConFuncionFlecha = () => {
+    console.log("Funcion de flecha retorna valor")
+    return "Hola flecha"
 }
 
-var persona3 = {
-    nombre: "Leia",
-    apellido: "Organa",
-    edd: 25,
-    direccion: "Otra direccion"
-}
+const saludarConFuncionFlechaSinRetorno = () => console.log("Hola sin retorno")
 
-//Clases
-class Persona {
-    //Propiedades - atributos
-    nombre = ""
-    apellido = ""
-    edad = 0
-    direccion = ""
-    fechaCreacion
+var resultado1 = saludarConFuncionBloque()
+var resultado2 = saludarConFuncionFlecha()
+var resultado3 = saludarConFuncionFlechaSinRetorno()
 
-    //Constructor
-    constructor(nombre, apellido, edad, direccion){
-        this.nombre = nombre
-        this.apellido = apellido
-        this.edad = edad
-        this.direccion = direccion
-        this.fechaCreacion = new Date()
-    }
+console.log(1 == 1) //true
+console.log(1 === 1) //true
+console.log(1 == "1") //true
+console.log(1 === "1") //false
 
-    // get; set;
-
-    get nombreCompleto(){
-        //backtick
-        //Interpolacion
-        return `${this.nombre} ${this.apellido}`
-    }
-
-    //Metodos - funciones
-    saludar(nombre){
-        console.log(`Hola ${nombre}, mi nombre es ${this.nombreCompleto}`.bgGreen)
-    }
-
-    decirEdad(){
-        console.log(`Mi edad es ${this.edad}`)
-    }
-
-    cambiarDireccion(direccionNueva){
-        this.direccion = direccionNueva
-        console.log(`He cambiado mi direccion a ${this.direccion}`)
-    }
-
-    decirDireccion(){
-        console.log(`Vivo en ${this.direccion}`)
-    }
-
-    presentarse(nombre){
-        this.saludar(nombre)
-        this.decirEdad()
-        this.decirDireccion()
-    }
-
-}
-
-var persona4 = new Persona("Han", "Solo", 30, "Millenium falcon")
-var persona5 = new Persona("Chewaka", "Wookie", 400, "Millenium falcon")
-
-//Usando objetos
-console.log(persona)
-console.log(persona2)
-console.log(persona3)
+console.log(resultado1, resultado2, resultado3)
 
 //Usando clases
+console.log(persona1)
+console.log(persona2)
+console.log(persona3)
 console.log(persona4)
 console.log(persona5)
 
@@ -93,3 +54,28 @@ persona4.saludar("Anakin")
 persona5.saludar(persona4.nombreCompleto)
 
 persona5.presentarse(persona4.nombreCompleto)
+
+persona4.agregarPasatiempo(pasatiempo1)
+persona5.agregarPasatiempo(pasatiempo1)
+persona4.agregarPasatiempo(pasatiempo3)
+persona4.decirPasatiempos()
+persona4.decirPasatiempoId(1)
+persona4.decirPasatiempoId(10)
+persona4.agregarPasatiempo(pasatiempo4)
+persona4.decirPasatiemposCategoria("Deporte")
+persona4.decirPasatiemposCategoria("Arte")
+persona4.modificarPasatiempo(1, "Duelo de sables de luz")
+persona4.modificarPasatiempo(2, "Poesia")
+persona4.modificarPasatiempo(3, "Poesia")
+persona4.decirPasatiempos()
+persona4.eliminarPasatiempo(1)
+persona4.decirPasatiempos()
+
+//Contratar empleados
+let empleado1 = new Empleado(persona4, 1000, "Programador")
+empleado1.trabajar(10)
+empleado1.trabajar(5)
+empleado1.trabajar(8)
+empleado1.cobrar()
+empleado1.trabajar(2)
+empleado1.cobrar()
