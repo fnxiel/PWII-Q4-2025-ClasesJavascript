@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "start-esp": "node index-esp.js"
+    "build": "tsc",
+    "iniciar": "node ./dist/index.js",
+    "start": "npm run build && npm run iniciar",
+    "start-js": "node ./app-js/index.js",
+    "start-esp": "node ./app-js/index-esp.js"
   },
   "keywords": [
     "hola",
@@ -17,5 +20,10 @@
   "license": "ISC",
   "dependencies": {
     "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.2",
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
   }
 }
